@@ -1,0 +1,56 @@
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.card {
+    transition: transform 0.2s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15) !important;
+}
+
+.badge {
+    padding: 0.5rem 0.75rem;
+    font-size: 0.85rem;
+}
+
+h1 {
+    color: #333;
+    font-weight: 700;
+    margin-bottom: 2rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.card-title {
+    color: #ff9800;
+    font-weight: 600;
+}
+
+.card-text strong {
+    color: #333;
+}
+
+.list-unstyled li {
+    padding: 0.25rem 0;
+    border-bottom: 1px solid #eee;
+}
+
+.list-unstyled li:last-child {
+    border-bottom: none;
+}
+
+.btn-primary {
+    background-color: #ff9800;
+    border-color: #ff9800;
+    padding: 0.75rem 2rem;
+    font-weight: 600;
+}
+
+.btn-primary:hover {
+    background-color: #e68900;
+    border-color: #e68900;
+}
