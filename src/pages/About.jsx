@@ -14,7 +14,6 @@ import resort12 from "../images/aboutPage/resort12.webp";
 import resort13 from "../images/aboutPage/resort13.jpg";
 import resort14 from "../images/aboutPage/resort14.jpg";
 import "../pages/pages.css";
-import Footer from "../components/Footer/Footer";
 
 const images = [
   resort1,
@@ -143,13 +142,6 @@ const About = () => {
           </div>
         </div>
       </div>
-
-      {/* footer */}
-      <section className="footer-section mt-5">
-        <div className="container">
-          <Footer />
-        </div>
-      </section>
     </>
   );
 };

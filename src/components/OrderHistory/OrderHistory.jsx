@@ -93,8 +93,8 @@ export default function OrderHistory() {
                         order.status === "Delivered"
                           ? "bg-success"
                           : order.status === "Cancelled"
-                          ? "bg-danger"
-                          : "bg-warning"
+                            ? "bg-danger"
+                            : "bg-warning"
                       }`}
                     >
                       {order.status}

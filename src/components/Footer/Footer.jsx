@@ -4,6 +4,8 @@ import { Link } from "react-router-dom";
 import { FaFacebook, FaInstagram, FaTwitter, FaWhatsapp } from "react-icons/fa";
 
 const Footer = () => {
+
+  const year = new Date().getFullYear();
   return (
     <footer className="footer-section py-5 mt-5">
       <div className="container">
@@ -91,7 +93,7 @@ const Footer = () => {
         </div>
         {/* Bottom */}
         <div className="footer-bottom text-center mt-5 pt-4">
-          <p>2025 © All rights reserved</p>
+          <p>{year} © All rights reserved</p>
         </div>
       </div>
     </footer>

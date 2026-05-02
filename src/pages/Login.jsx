@@ -26,15 +26,15 @@ export default function Login() {
       //   setMsg(data.message || "Signup failed");
       //   return;
       // }
-    
-      //  Save token
-      if (data.token) {
-        localStorage.setItem("token", data.token);
-      }
 
+      //  Save token
+      if (data?.data?.token) {
+        localStorage.setItem("token", data?.data?.token);
+      }
+      console.log("Login response data:", data);
       // Save user details so navbar can show username
-      if (data.user) {
-        localStorage.setItem("user", JSON.stringify(data.user));
+      if (data?.data?.user) {
+        localStorage.setItem("user", JSON.stringify(data?.data?.user));
       }
 
       localStorage.setItem("isLoggedIn", "true");

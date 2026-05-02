@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import Login from "../pages/Login.jsx";
+import { API } from "../api.js";
 
 export default function Signup() {
   const [username, setUsername] = useState("");
@@ -20,7 +21,7 @@ export default function Signup() {
       //   headers: { "Content-Type": "application/json" },
       //   body: JSON.stringify({ username, email, password }),
       // });
-      await API.post("/auth/login", {
+      await API.post("/auth/signup", {
         username,
         email,
         password,

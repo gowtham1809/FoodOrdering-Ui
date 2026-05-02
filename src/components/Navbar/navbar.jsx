@@ -13,11 +13,14 @@ export const Navbar = () => {
   const dropdownRef = useRef(null);
 
   const handleLogout = () => {
-    localStorage.removeItem("isLoggedIn");
     window.location.href = "/login";
   };
 
-  // ✅ Hide dropdown when clicked outside
+  const closeProfile = () => {
+    setShowDropdown(false);
+  }
+
+  // <i className="fa-solid fa-check"></i> Hide dropdown when clicked outside
   useEffect(() => {
     const handleClickOutside = (e) => {
       if (dropdownRef.current && !dropdownRef.current.contains(e.target)) {
@@ -53,6 +56,10 @@ export const Navbar = () => {
             // If logged in
             <div className="d-flex align-items-center">
               {/* Avatar Circle */}
+
+              <span className="fw-semibold me-4 text-dark my-2">
+                Hello, {username.split(" ")[0]}
+              </span>
               <div
                 className="avatar-circle bg-danger text-white fw-bold d-flex align-items-center justify-content-center "
                 style={{
@@ -68,11 +75,6 @@ export const Navbar = () => {
               >
                 {firstLetter}
               </div>
-
-              <span className="fw-semibold me-5 text-dark my-2">
-                Hello, {username.split(" ")[0]}
-              </span>
-
               {/* Dropdown Menu */}
               {showDropdown && (
                 <div
@@ -81,31 +83,36 @@ export const Navbar = () => {
                 >
                   <Link
                     to="/profile"
+                    onClick={closeProfile}
                     className="dropdown-item text-dark px-3 py-2"
                     style={{ textDecoration: "none", display: "block" }}
                   >
-                    👤 Profile
+                    <i className="fa-solid fa-user me-2"></i>Profile
                   </Link>
                   <Link
                     to="/orderHistory"
+                    onClick={closeProfile}
                     className="dropdown-item text-dark px-3 py-2"
                     style={{ textDecoration: "none", display: "block" }}
                   >
-                    🧾 Order History
+                    <i className="fa-solid fa-receipt me-2"></i>Order History
                   </Link>
                   <Link
                     to="/terms"
+                    onClick={closeProfile}
                     className="dropdown-item text-dark px-3 py-2"
                     style={{ textDecoration: "none", display: "block" }}
                   >
-                    📜 Terms & Conditions
+                    <i className="fa-solid fa-scroll me-2"></i>Terms &
+                    Conditions
                   </Link>
                   <hr className="my-1" />
                   <button
                     onClick={handleLogout}
                     className="dropdown-item text-danger px-3 py-2 border-0 bg-white w-100 text-start"
                   >
-                    🚪 Logout
+                    <i className="fa-solid fa-right-from-bracket me-2"></i>
+                    Logout
                   </button>
                 </div>
               )}
@@ -156,25 +163,26 @@ export const NavigationBar = () => {
         style={{ backgroundColor: navColor, transition: "0.4s ease" }}
       >
         <li className="nav-item">
-          <a className="nav-link text-white" href="/">
-            HOME
-          </a>
-        </li>
-        <li className="nav-item">
-          <a className="nav-link text-white" href="/about">
-            About Us
-          </a>
-        </li>
-        <li className="nav-item">
-          <a className="nav-link text-white" href="/menu">
-            Menu
-          </a>
+          <Link to="/" className="nav-link text-white">
+            Home
+          </Link>
         </li>
 
         <li className="nav-item">
-          <a className="nav-link text-white" href="/contact">
+          <Link to="/about" className="nav-link text-white">
+            About Us
+          </Link>
+        </li>
+        <li className="nav-item">
+          <Link to="/menu" className="nav-link text-white">
+            Menu
+          </Link>
+        </li>
+
+        <li className="nav-item">
+          <Link to="/contact" className="nav-link text-white">
             Contact Us
-          </a>
+          </Link>
         </li>
         <li className="nav-item">
           <Link to="/TableBooking">

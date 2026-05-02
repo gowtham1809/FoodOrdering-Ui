@@ -6,17 +6,17 @@ const Contact = () => {
   const [userName, setUserName] = useState("");
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
-  const handleSubmit = async(e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!userName | !email | !message) alert("please fill the Details to submit.")
-    console.log({ userName, email, message })
+    if (!userName | !email | !message)
+      alert("please fill the Details to submit.");
+    console.log({ userName, email, message });
     try {
       await API.post(`/contacts/`, { userName, email, message });
       alert("Thank you For Your Response.");
     } catch (e) {
-      console.log(e)
+      console.log(e);
     }
-    
   };
   return (
     <div
@@ -34,7 +34,7 @@ const Contact = () => {
             type="text"
             className="form-control"
             placeholder="Your Name"
-            onChange={(e)=>setUserName(e.target.value)}
+            onChange={(e) => setUserName(e.target.value)}
             required
           />
         </div>
@@ -44,7 +44,7 @@ const Contact = () => {
             type="email"
             className="form-control"
             placeholder="Your Email"
-            onChange={(e)=>setEmail(e.target.value)}
+            onChange={(e) => setEmail(e.target.value)}
             required
           />
         </div>
@@ -54,7 +54,7 @@ const Contact = () => {
             className="form-control"
             rows="4"
             placeholder="Your Message"
-            onChange={(e)=>setMessage(e.target.value)}
+            onChange={(e) => setMessage(e.target.value)}
             required
           ></textarea>
         </div>
