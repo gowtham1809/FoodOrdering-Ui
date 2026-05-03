@@ -1,4 +1,4 @@
-import { createBrowserRouter, Navigate } from "react-router-dom";
+import { createBrowserRouter, Navigate, Link } from "react-router-dom";
 
 import Layout from "./Layout.jsx";
 import Login from "./pages/Login.jsx";
@@ -33,13 +33,24 @@ const router = createBrowserRouter([
       { path: "contact", element: <Contact /> },
       { path: "menu", element: <Menu /> },
       { path: "cart", element: <Cart /> },
-      { path: "tableBooking", element: <TableBooking /> },
+      // { path: "tableBooking", element: <TableBooking /> },
       { path: "orderHistory", element: <OrderHistory /> },
     ],
   },
   { path: "/login", element: <Login /> },
   { path: "/signup", element: <Signup /> },
-  { path: "*", element: <h4>404 - Page Not Found</h4> },
+  {
+    path: "*",
+    element: (
+      <div className="d-flex flex-column align-items-center justify-content-center vh-100 text-center p-3">
+        <h4 className="mb-3">404 - Page Not Found</h4>
+        <p className="mb-4">Sorry, we couldn't find the page you're looking for.</p>
+        <Link to="/" className="btn btn-primary">
+          Back to Home
+        </Link>
+      </div>
+    ),
+  },
 ]);
 
 export default router;

@@ -3,6 +3,7 @@ import "./navbar.css";
 import { useLocation, Link } from "react-router-dom";
 import frontPhoto from "../../images/foodOfTamilNadu.png";
 import { useCart } from "../../context/cartContext";
+import TableBooking from "../TableBooking/TableBooking.jsx";
 
 export const Navbar = () => {
   const isLoggedIn = localStorage.getItem("isLoggedIn") === "true";
@@ -18,7 +19,7 @@ export const Navbar = () => {
 
   const closeProfile = () => {
     setShowDropdown(false);
-  }
+  };
 
   // <i className="fa-solid fa-check"></i> Hide dropdown when clicked outside
   useEffect(() => {
@@ -35,11 +36,15 @@ export const Navbar = () => {
     <nav className="navbar bg-light sticky-top shadow-sm">
       <div className="container-fluid d-flex flex-wrap justify-content-center justify-content-md-between align-items-center py-1">
         {/* Left Info */}
-        <div className="text-center flex-grow-1 order-1 order-md-1">
-          <i className="fa-regular fa-clock me-2 text-warning"></i>
-          <span className="me-3 fw-semibold">Order Food 24/7</span>
-          <i className="fa-solid fa-phone text-warning me-2"></i>
-          <span className="fw-semibold">+91 12345-12345</span>
+        <div className="text-center flex-grow-1 order-1 order-md-1 d-flex flex-column flex-md-row align-items-center justify-content-center gap-1">
+          <div className="d-flex align-items-center justify-content-center">
+            <i className="fa-regular fa-clock me-2 text-warning"></i>
+            <span className="fw-semibold">Order Food 24/7</span>
+          </div>
+          <div className="d-flex align-items-center justify-content-center">
+            <i className="fa-solid fa-phone text-warning me-2"></i>
+            <span className="fw-semibold">+91 12345-12345</span>
+          </div>
         </div>
 
         {/* Right Section */}
@@ -81,14 +86,14 @@ export const Navbar = () => {
                   className="position-absolute end-0 mt-5 bg-white border rounded shadow-sm py-2"
                   style={{ width: "200px", zIndex: 1000, top: 0 }}
                 >
-                  <Link
+                  {/* <Link
                     to="/profile"
                     onClick={closeProfile}
                     className="dropdown-item text-dark px-3 py-2"
                     style={{ textDecoration: "none", display: "block" }}
                   >
                     <i className="fa-solid fa-user me-2"></i>Profile
-                  </Link>
+                  </Link> */}
                   <Link
                     to="/orderHistory"
                     onClick={closeProfile}
@@ -97,7 +102,7 @@ export const Navbar = () => {
                   >
                     <i className="fa-solid fa-receipt me-2"></i>Order History
                   </Link>
-                  <Link
+                  {/* <Link
                     to="/terms"
                     onClick={closeProfile}
                     className="dropdown-item text-dark px-3 py-2"
@@ -105,7 +110,7 @@ export const Navbar = () => {
                   >
                     <i className="fa-solid fa-scroll me-2"></i>Terms &
                     Conditions
-                  </Link>
+                  </Link> */}
                   <hr className="my-1" />
                   <button
                     onClick={handleLogout}
@@ -127,6 +132,7 @@ export const Navbar = () => {
 export const NavigationBar = () => {
   const location = useLocation();
   const { cart } = useCart();
+  const [showTableBookingModal, setShowTableBookingModal] = useState(false);
 
   const pageColor = {
     "/": "rgba(0, 0, 0, 0.6)",
@@ -185,9 +191,12 @@ export const NavigationBar = () => {
           </Link>
         </li>
         <li className="nav-item">
-          <Link to="/TableBooking">
-            <button className="btn btn-outline-light">Table Booking</button>
-          </Link>
+          <button
+            className="btn btn-outline-light"
+            onClick={() => setShowTableBookingModal(true)}
+          >
+            Table Booking
+          </button>
         </li>
 
         {/*  Cart Button */}
@@ -200,6 +209,18 @@ export const NavigationBar = () => {
           )}
         </Link>
       </ul>
+
+      {/* Table Booking Modal */}
+      {showTableBookingModal && (
+        <div
+          className="modal-overlay"
+          onClick={() => setShowTableBookingModal(false)}
+        >
+          <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+            <TableBooking onClose={() => setShowTableBookingModal(false)} />
+          </div>
+        </div>
+      )}
     </div>
   );
 };

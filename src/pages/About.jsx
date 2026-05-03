@@ -14,6 +14,7 @@ import resort12 from "../images/aboutPage/resort12.webp";
 import resort13 from "../images/aboutPage/resort13.jpg";
 import resort14 from "../images/aboutPage/resort14.jpg";
 import "../pages/pages.css";
+import { Link } from "react-router";
 
 const images = [
   resort1,
@@ -54,11 +55,11 @@ const About = () => {
                 always open.
               </p>
 
-              <a href="/menu">
+              <Link to="/menu">
                 <button className="btn btn-warning rounded-pill fw-semibold px-4 py-2">
                   Eat & Enjoy <i className="bi bi-arrow-right ms-2"></i>
                 </button>
-              </a>
+              </Link>
             </div>
 
             {/* Image Section */}

@@ -100,16 +100,9 @@ const OfferCard = () => {
       </div>
 
       {/* // menu */}
-      <section className="food_section layout_padding-bottom my-1">
+      <section id="gallery" className="food_section layout_padding-bottom my-1">
         <div className="container">
           <Menu />
-        </div>
-      </section>
-
-      {/* footer */}
-      <section className="footer-section mt-5">
-        <div className="container">
-          <Footer />
         </div>
       </section>
     </>

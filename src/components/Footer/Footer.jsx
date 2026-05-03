@@ -4,8 +4,15 @@ import { Link } from "react-router-dom";
 import { FaFacebook, FaInstagram, FaTwitter, FaWhatsapp } from "react-icons/fa";
 
 const Footer = () => {
-
   const year = new Date().getFullYear();
+
+  const scrollToSection = (id) => {
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   return (
     <footer className="footer-section py-5 mt-5">
       <div className="container">
@@ -28,13 +35,23 @@ const Footer = () => {
                 <h5 className="footer-heading">FOR TRAVELLERS</h5>{" "}
                 <ul className="footer-links">
                   <li>
-                    <Link to="#">Restaurants</Link>
+                    <Link
+                      to="/#gallery"
+                      onClick={() => scrollToSection("gallery")}
+                    >
+                      Restaurants
+                    </Link>
                   </li>
                   <li>
-                    <Link to="#">Hostels</Link>
+                    <Link
+                      to="/#gallery"
+                      onClick={() => scrollToSection("gallery")}
+                    >
+                      Hostels
+                    </Link>
                   </li>
                   <li>
-                    <Link to="#">Bed & Breakfasts</Link>
+                    <Link to="/menu">Breakfasts</Link>
                   </li>
                 </ul>
               </div>
@@ -66,7 +83,6 @@ const Footer = () => {
                   className="form-control footer-input"
                   placeholder="Email address"
                   required
-                  
                 />
                 {/* <button className="btn btn-warning px-4">Submit</button> */}
                 <button type="submit" className="btn btn-warning px-4">

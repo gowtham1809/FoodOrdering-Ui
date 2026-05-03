@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./TableBooking.css";
 import { motion, AnimatePresence } from "framer-motion";
 
-const TableBooking = () => {
+const TableBooking = ({ onClose }) => {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -45,8 +45,11 @@ const TableBooking = () => {
       guests: 1,
     });
 
-    // Hide popup automatically after 3 seconds
-    setTimeout(() => setShowPopup(false), 3000);
+    // Hide popup and close modal automatically after 3 seconds
+    setTimeout(() => {
+      setShowPopup(false);
+      if (onClose) onClose();
+    }, 3000);
   };
 
   return (
